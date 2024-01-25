@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malware Detection</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-indigo-200 p-4 flex justify-center items-center h-screen">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105">
+        <h1 class="text-2xl font-bold mb-4">Malware Detection</h1>
+        {% if error %}
+            <p class="text-red-500 mb-4">{{ error }}</p>
+        {% endif %}
+        {% if result %}
+            <p class="text-green-500 mb-4">{{ result }}</p>
+        {% endif %}
+        <form action="/detect" method="post" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="block text-gray-600 text-sm font-semibold mb-2" for="file">Upload File:</label>
+                <input type="file" name="file" id="file" accept=".csv" class="border rounded-md p-2">
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition duration-300 ease-in-out">Detect</button>
+        </form>
+    </div>
+</body>
+</html>
